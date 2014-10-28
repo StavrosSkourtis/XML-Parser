@@ -1,3 +1,9 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -15,6 +21,25 @@ public class XMLFile {
     public XMLFile(String xml){
         nodes = new ArrayList<XMLNode>();
         update(xml);
+    }
+    
+    public void read(String filePath) throws IOException{
+    	String text="",line;
+    	BufferedReader reader = new BufferedReader(new FileReader(filePath));
+    	
+    	
+    	while((line = reader.readLine())!=null){
+    		text+=line;
+    	}
+    	
+    	reader.close();
+    	update(text);
+    }
+    
+    public void write(String filePath) throws IOException{
+    	BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
+    	writer.write(this.toString());
+    	writer.close();
     }
     
     public void update(String xml){
