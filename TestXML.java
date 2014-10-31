@@ -15,7 +15,7 @@ public class TestXML {
         
         
         XMLFile file = new XMLFile();
-        file.read("temp.xml");
+        //file.read("temp.xml");
         System.out.println(file);
         
     }
