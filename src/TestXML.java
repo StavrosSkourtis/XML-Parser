@@ -8,14 +8,16 @@ public class TestXML {
         
     public static void main(String args[]) throws IOException{
         
-        String xml = "<mesh id=\"lolol\" >\n"+
-                     "    lolthis is text<vertex x=\"1\" y=\"2\" /> \n"+
-                     "</mesh>\n"+
-                     "<fallingbridge x=\"5\" y=\"6\" />\n";
-        
+        XMLNode node = new XMLNode("message");
+        node.addAttribute("from", "username");
+        node.addAttribute("to", "user2");
+        node.setInnerText("hello, how are you?");
         
         XMLFile file = new XMLFile();
-        //file.read("temp.xml");
+        
+        file.addNode(node);
+        
+        
         System.out.println(file);
         
     }

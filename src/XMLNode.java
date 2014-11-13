@@ -10,6 +10,13 @@ public class XMLNode {
     private String name;
     private String innerText;
     
+    public XMLNode(String tagName){
+    	 children = new ArrayList<XMLNode>();
+         attributes = new ArrayList<Attribute>();
+         innerText="";
+         this.name = tagName;
+    }
+    
     public XMLNode(String[] args,String innerText){
         if(args.length==0)
             throw new IllegalArgumentException("node zero arguments");
@@ -54,6 +61,7 @@ public class XMLNode {
         
     }
     
+    
     public  void addAttribute(String name,String value){
         attributes.add(new Attribute(name, value));
     }
@@ -74,12 +82,20 @@ public class XMLNode {
         children.add(new XMLNode(args, innerText));
     }
     
+    public void addChildNode(XMLNode child){
+    	children.add(child);
+    }
+    
     public String getName(){
         return name;
     }
     
     public String getInnerText(){
         return innerText;
+    }
+    
+    public void setInnerText(String innerText){
+    	this.innerText = innerText;
     }
     
     public String getAttribute(String name){
@@ -107,23 +123,26 @@ public class XMLNode {
     public String toString(){
         String text= "<"+name+" ";
         
-        
         for(int i=0;i<attributes.size();i++){
-            text+= attributes.get(i).getName()+"=\""+attributes.get(i).getValue()+"\" ";
+        	text+= attributes.get(i).name+"=\""+attributes.get(i).value+"\" ";
         }
         
-        text+=">"+innerText;
         
+        text+=">";
+        text+=innerText;
+        	
         for(int i=0;i<children.size();i++){
-            if(i==0)
-               text+="\n";
-            text += "\t"+children.get(i)+"\n";
+        	if(i==0)
+        		text+="\r\n";
+        	text+=children.get(i).toString()+"\r\n";
         }
-        
+        	
         text+="</"+name+">";
         
+           
         return text;
     }
+    
     public class Attribute {
         private String name;
         private String value;

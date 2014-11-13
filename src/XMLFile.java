@@ -124,6 +124,10 @@ public class XMLFile {
         nodes.add(new XMLNode(args, innerText));
     }
     
+    public void addNode(XMLNode node){
+    	nodes.add(node);
+    }
+    
     public String toString(){
         String text = "";
         for(int i=0;i<nodes.size();i++)
