@@ -20,3 +20,4 @@ Can i use it?
 ==========
 
 Yes , you can use and modify it as you want.
+This project comes with the MIT licence.
