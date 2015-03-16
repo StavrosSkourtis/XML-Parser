@@ -164,7 +164,7 @@ public class XmlParser {
      *
      * @param node the node to add to
      */
-    public void readAttributes(XmlElementNode node) {
+    private void readAttributes(XmlElementNode node) {
     	skipSpaces();
         // loop until there are no more attributes
         while (xml.charAt(0) != '<' && xml.charAt(0) != '>' && !(xml.charAt(0) == '/' && xml.charAt(1) == '>')) {
